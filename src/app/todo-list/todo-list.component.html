@@ -1,0 +1,36 @@
+<section class="menu-container">
+    <div class="list-container">
+        <div class="page-header-text">
+            <h1>List of todos</h1>
+        </div>
+
+        <ul class="todo-list">
+            <li *ngFor="let todo of todos; let index=index"  class="list-element-container">
+                <div class="list-element">
+                    <div>{{index + 1}}</div>
+                    <div>{{todo.name | titlecase}}</div>
+                    <div>{{todo.checked ? '✅': '❌'}}</div>
+                </div>
+                <div class="list-operations">
+                    <button (click)="updateStatus(todo)">{{todo.checked ? 'uncheck': 'check'}}</button>
+                    <button (click)="deleteTodo(todo.id)">remove</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="add-new-container">
+        <div>
+            <h1>Add new todo</h1>
+        </div>
+
+        <div class="add-container">
+            <div class="input-wrapper">
+                <label for="input">Enter the description</label>
+                <input id="input" [(ngModel)]="newTodoDescription"/>
+                <button (click)="submitNewTodo()">add</button>
+            </div>
+        </div>
+    </div>
+</section>
+
