@@ -65,7 +65,7 @@ export function todosReducer(state: any = initialState, action: TodosActions): a
                 message: 'Update',
             };
         case TodosActionType.ADD_TODO_SUCCESS:
-            const newTodo = {id: [...state.todos].length + 1000, ...action.payload };
+            const newTodo = {id: Math.floor(Math.random() * 6000) + 100, ...action.payload };
             const newList = [...state.todos, newTodo];
 
             return {

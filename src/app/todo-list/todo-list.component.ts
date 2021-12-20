@@ -27,12 +27,12 @@ export class TodoListComponent implements OnInit, OnDestroy {
     }
 
     public getTodos(): void {
+        this.store.dispatch(new Todos.GetTodos());
+
         this.subscription.add(this.store.select<TodosState>('todos').subscribe(response => {
             console.log('store state response: ', response);
             this.todos = response.todos;
         }));
-        this.store.dispatch(new Todos.GetTodos());
-
     }
 
     public submitNewTodo() {
